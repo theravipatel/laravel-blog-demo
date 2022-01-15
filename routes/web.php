@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccessorsController;
 use App\Http\Controllers\AggregrateController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
@@ -16,6 +17,7 @@ use App\Http\Controllers\FormDemoController;
 use App\Http\Controllers\HttpClientDemoController;
 use App\Http\Controllers\HttpReqController;
 use App\Http\Controllers\JoinDemoController;
+use App\Http\Controllers\MutatorController;
 use App\Http\Controllers\QuertBuilderController;
 use App\Http\Controllers\SaveDataController;
 use App\Http\Controllers\SessionLoginController;
@@ -108,3 +110,7 @@ Route::get("query_builder",[QuertBuilderController::class,"get_data"]);
 Route::get("aggregate_method",[AggregrateController::class,"get_data"]);
 
 Route::get("joindemo",[JoinDemoController::class,"get_data"]);
+
+Route::get("accessors",[AccessorsController::class,"index"]);
+
+Route::get("mutatordemo",[MutatorController::class,"index"]);
