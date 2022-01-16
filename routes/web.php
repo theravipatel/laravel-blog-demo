@@ -19,6 +19,7 @@ use App\Http\Controllers\FormDemoController;
 use App\Http\Controllers\HttpClientDemoController;
 use App\Http\Controllers\HttpReqController;
 use App\Http\Controllers\JoinDemoController;
+use App\Http\Controllers\MarkdownMailController;
 use App\Http\Controllers\MutatorController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QuertBuilderController;
@@ -124,3 +125,5 @@ Route::get("onetoone_manyrelation",[CategoryController::class,"index"]);
 Route::get("fluent_string",[FluentStringController::class,"index"]);
 
 Route::get("route_model_binding/{key:username}",[RouteModelBindingController::class,"index"]);
+
+Route::get("markdownmail",[MarkdownMailController::class,"index"]);
