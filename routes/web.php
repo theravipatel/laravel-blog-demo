@@ -7,18 +7,22 @@ use Illuminate\Support\Facades\App;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PeopleController;
 use App\Http\Controllers\BladDemoController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyUsersController;
 use App\Http\Controllers\DataListPagingController;
 use App\Http\Controllers\DBDemoController;
 use App\Http\Controllers\EditDeleteController;
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\FluentStringController;
 use App\Http\Controllers\FormDemoController;
 use App\Http\Controllers\HttpClientDemoController;
 use App\Http\Controllers\HttpReqController;
 use App\Http\Controllers\JoinDemoController;
 use App\Http\Controllers\MutatorController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QuertBuilderController;
+use App\Http\Controllers\RouteModelBindingController;
 use App\Http\Controllers\SaveDataController;
 use App\Http\Controllers\SessionLoginController;
 
@@ -114,3 +118,9 @@ Route::get("joindemo",[JoinDemoController::class,"get_data"]);
 Route::get("accessors",[AccessorsController::class,"index"]);
 
 Route::get("mutatordemo",[MutatorController::class,"index"]);
+
+Route::get("onetoone_manyrelation",[CategoryController::class,"index"]);
+
+Route::get("fluent_string",[FluentStringController::class,"index"]);
+
+Route::get("route_model_binding/{key:username}",[RouteModelBindingController::class,"index"]);
