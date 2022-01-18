@@ -557,3 +557,49 @@ Route::get("list/{key:name?}", ['DeviceController::class', 'list']);
         }
         return ["result"=>$res,"msg"=>$msg];
     }
+
+### 51) Search API
+- Route::get("search_user_data/{keyword}",[UsersPostPutDeleteSearchApiController::class,"search_user_data"]);
+   function search_user_data($keyword){
+        $res = 0;
+        $msg = "No Data Found.";
+        if($keyword!=""){
+            $user_data = User::where("username","LIKE","%".$keyword."%")
+            ->orWhere('first_name', 'LIKE', '%'.$keyword.'%')
+            ->orWhere('last_name', 'LIKE', '%'.$keyword.'%')
+            ->get();
+            
+            $res = $user_data;
+        }
+        return ["result"=>$res,"msg"=>$msg];
+    }
+
+### 52) Validation API
+- Route::post("validate_api",[ValidationApiController::class,"validate_api"]);
+
+    function validate_api(Request $req){
+
+        $res = 0;
+        $msg = array("message"=>"Something went wrong. Please try again.");
+        
+        $rules = array(
+            "name"=>"required"
+        );
+        $validator = validator()->make($req->all(),$rules);
+        if($validator->fails()){
+            $msg[] = $validator->errors();
+            return response()->json($msg,401);
+        }else{
+            
+            if(isset($req)){
+                $category_data = new Category;
+                $category_data->name        = $req->name;
+                $result = $category_data->save();
+                if($result){
+                    $res = 1;
+                    $msg = ["message"=>"Data saved successfully."];
+                    return ["result"=>$res,"msg"=>$msg];
+                }
+            }
+        }
+    }
