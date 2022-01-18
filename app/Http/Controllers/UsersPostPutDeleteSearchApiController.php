@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-class UsersPostPutDeleteApiController extends Controller
+class UsersPostPutDeleteSearchApiController extends Controller
 {
     function save_user_data(Request $req){
         
@@ -64,6 +64,20 @@ class UsersPostPutDeleteApiController extends Controller
                 $res = 1;
                 $msg = "Data deleted successfully.";
             }
+        }
+        return ["result"=>$res,"msg"=>$msg];
+    }
+
+    function search_user_data($keyword){
+        $res = 0;
+        $msg = "No Data Found.";
+        if($keyword!=""){
+            $user_data = User::where("username","LIKE","%".$keyword."%")
+            ->orWhere('first_name', 'LIKE', '%'.$keyword.'%')
+            ->orWhere('last_name', 'LIKE', '%'.$keyword.'%')
+            ->get();
+            
+            $res = $user_data;
         }
         return ["result"=>$res,"msg"=>$msg];
     }
