@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\APIResourceController;
 use App\Http\Controllers\FirstAPIController;
 use App\Http\Controllers\UsersApiController;
 use App\Http\Controllers\UsersParamApiController;
@@ -35,3 +36,5 @@ Route::delete("delete_user_data/{id}",[UsersPostPutDeleteSearchApiController::cl
 Route::get("search_user_data/{keyword}",[UsersPostPutDeleteSearchApiController::class,"search_user_data"]);
 
 Route::post("validate_api",[ValidationApiController::class,"validate_api"]);
+
+Route::apiResource("category",APIResourceController::class);

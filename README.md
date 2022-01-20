@@ -603,3 +603,11 @@ Route::get("list/{key:name?}", ['DeviceController::class', 'list']);
             }
         }
     }
+
+### 53) Make Resource
+- command: php artisan make:controller APIResourceController --resource
+- It will create controller with predefined function i.e. index(), create(), store(), show(), update(), destroy(), edit()
+- Route::apiResource("category",APIResourceController::class);
+- for example,
+- GET = http://localhost:8000/api/category/1 - It will call show()
+- POST = http://localhost:8000/api/category/ - It will call store()
