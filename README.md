@@ -605,9 +605,14 @@ Route::get("list/{key:name?}", ['DeviceController::class', 'list']);
     }
 
 ### 53) Make Resource
-- command: php artisan make:controller APIResourceController --resource
 - It will create controller with predefined function i.e. index(), create(), store(), show(), update(), destroy(), edit()
 - Route::apiResource("category",APIResourceController::class);
+- For a resource, show, store, update, index methods are reserved. Here is how it is going to work:
+	- A GET call on the route without any ID will call the index() method
+	- A GET call on the route with a resource ID will call the show() method
+	- A POST call on the route will call the store() method
+	- A PATCH call on a route with ID will call the update() method
+- The API resource route is identical to the web resource route except it doesn't come with the methods that return the views, i.e. create(), edit() etc.
 - for example,
 - GET = http://localhost:8000/api/category/1 - It will call show()
 - POST = http://localhost:8000/api/category/ - It will call store()
